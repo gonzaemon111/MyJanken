@@ -23,7 +23,18 @@ class ViewController: UIViewController {
     @IBAction func shuffleAction(_ sender: Any) {
         // arc4random_uniform()の戻り値は、UInt32。
         // Int型じゃないからキャストしてInt型に変更。
-        answerNumber = Int(arc4random_uniform(3))
+        // answerNumber = Int(arc4random_uniform(3))
+        
+        var newAnswerNumber = 0
+
+        repeat {
+
+            newAnswerNumber = Int(arc4random_uniform(3))
+
+        } while answerNumber == newAnswerNumber
+        
+        answerNumber = newAnswerNumber
+
         if answerNumber == 0 {
             answerLabel.text = "グー"
             answerImageView.image = UIImage(named: "gu")
